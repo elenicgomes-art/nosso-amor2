@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️ Nossos 3 Meses ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{min-height:100vh;overflow-x:hidden;background:linear-gradient(135deg,#ff5f8f,#ff7eb3,#ffc3d1);display:flex;justify-content:center;align-items:center;padding:20px;position:relative}
+.container{width:100%;max-width:850px;background:rgba(255,255,255,.15);backdrop-filter:blur(15px);border-radius:30px;padding:40px;text-align:center;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.2);z-index:2}
+h1{font-size:2.7rem;margin-bottom:10px}
+.contador{margin:20px 0 30px;font-size:1.2rem;font-weight:bold}
+.foto{width:100%;max-width:320px;border-radius:25px;border:4px solid rgba(255,255,255,.8);box-shadow:0 0 25px rgba(255,255,255,.3);margin-bottom:25px}
+.botao{padding:14px 28px;border:none;border-radius:30px;background:#fff;color:#ff4f81;font-size:1rem;font-weight:bold;cursor:pointer;margin-bottom:30px}
+.carta{text-align:left;line-height:1.8;font-size:1.1rem}
+.carta p{margin-bottom:18px}
+.assinatura{margin-top:30px;font-size:1.3rem;font-weight:bold}
+.heart{position:fixed;pointer-events:none;animation:subir linear forwards}
+@keyframes subir{from{transform:translateY(100vh);opacity:1}to{transform:translateY(-100px);opacity:0}}
+</style>
+</head>
+<body>
+<audio id="musica" loop preload="auto">
+<source src="cherry-waves.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+<h1>❤️ Feliz 3 Meses ❤️</h1>
+<div class="contador" id="contador"></div>
+
+<img src="nossa-foto.png" class="foto" alt="Nossa foto">
+
+<button class="botao" id="btnMusica">🎵 Tocar Cherry Waves</button>
+
+<div class="carta">
+<p>Até que enfim chegaram os nossos 3 meses juntos. Eu estava muito ansioso por esse momento, porque quero que a cada dia a gente fique ainda mais unido.</p>
+<p>Você sabe o quanto eu te amo e o quanto desejo passar a minha vida ao seu lado. Espero que esse sentimento dure para sempre e que você nunca se esqueça do quanto é especial para mim.</p>
+<p>Mesmo que ainda não possamos nos tocar ou nos ver pessoalmente, eu sei que esse dia vai chegar. E, quando chegar, vamos viver momentos incríveis e ser muito felizes juntinhos.</p>
+<p>Cada instante ao seu lado é único e especial para mim. Você faz os meus dias melhores, e eu sou muito grato por ter você na minha vida.</p>
+<p>Eu te amo muito, minha Nat Marquis. Espero que você goste deste pequeno texto que fiz com todo o carinho do mundo para você.</p>
+<p>Parabéns por ser essa garota incrível, carinhosa e por sempre ser tão boa comigo.</p>
+<p>Eu te amo demais e desejo que nós dois fiquemos juntos para sempre. ❤️</p>
+</div>
+
+<div class="assinatura">Com todo o meu amor ❤️</div>
+</div>
+
+<script>
+const dataNamoro = new Date("2026-04-18T00:00:00");
+
+function atualizarContador(){
+ const hoje=new Date();
+ const dias=Math.floor((hoje-dataNamoro)/(1000*60*60*24));
+ document.getElementById("contador").innerHTML=`✨ Estamos juntos há ${dias} dias ✨`;
+}
+atualizarContador();
+
+const musica=document.getElementById("musica");
+const botao=document.getElementById("btnMusica");
+
+botao.addEventListener("click", async()=>{
+ try{
+   if(musica.paused){
+     await musica.play();
+     botao.textContent="⏸️ Pausar Música";
+   }else{
+     musica.pause();
+     botao.textContent="🎵 Tocar Cherry Waves";
+   }
+ }catch(e){
+   alert("Adicione o arquivo cherry-waves.mp3 na mesma pasta do site.");
+ }
+});
+
+function criarCoracao(){
+ const c=document.createElement("div");
+ c.className="heart";
+ c.innerHTML="❤️";
+ c.style.left=Math.random()*100+"vw";
+ c.style.fontSize=(Math.random()*20+15)+"px";
+ c.style.animationDuration=(Math.random()*3+4)+"s";
+ document.body.appendChild(c);
+ setTimeout(()=>c.remove(),7000);
+}
+setInterval(criarCoracao,300);
+</script>
+</body>
+</html>
